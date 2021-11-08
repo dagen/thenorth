@@ -1,3 +1,6 @@
+include:
+  - server
+  
 openssh:
   pkg.installed
 
