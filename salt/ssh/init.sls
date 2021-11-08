@@ -1,6 +1,6 @@
 include:
   - server
-  
+
 openssh:
   pkg.installed
 
@@ -12,4 +12,3 @@ openssh:
     - source: salt://ssh/ssh_config
     - require:
       - pkg: openssh
-
