@@ -1,0 +1,14 @@
+
+
+List modules available
+    salt-call sys.list_modules
+
+List functions within modules   
+    salt-call sys.list_functions <module_name>
+
+
+List STATE modules
+    salt-call sys.list_state_modules
+
+List STATE functions
+    salt_call sys.list_state_functions <state_module_name>

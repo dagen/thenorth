@@ -1,0 +1,199 @@
+#state_id_name:
+#  state_module_name.state_function_name:
+#    - attribute_key: attribute_value
+
+
+user_dgentry:
+  user.present:
+    - name: dgentry
+
+#  Alternate call
+#  state_id_name is considered the first value of the 'name' argument
+dgentry:
+  user.present
+    - fullname: Damon Gentry
+
+#### salt-call sys.state_doc user.present   ###
+
+ name: The name of the user to manage
+ uid: The user id to assign. If not specified, and the user does not exist, then the next available uid will be assigned.
+ gid: The id of the default group to assign to the user. Either a group name or gid can be used. If not specified, and the user does not exist, then    the next available gid will be assigned.
+allow_uid_change : False
+    Set to ``True`` to allow the state to update the uid.
+    New in version 2018.3.1
+
+allow_gid_change : False
+    Set to ``True`` to allow the state to update the gid.
+
+    New in version 2018.3.1
+
+usergroup
+    If True, a group with the same name as the user will be created. If
+    False, a group with the same name as the user will not be created. The
+    default is distribution-specific. See the USERGROUPS_ENAB section of
+    the login.defs(5) man page.
+
+    Note:
+        Only supported on GNU/Linux distributions
+
+    New in version 3001
+
+groups
+    A list of groups to assign the user to, pass a list object. If a group
+    specified here does not exist on the minion, the state will fail.
+    If set to the empty list, the user will be removed from all groups
+    except the default group. If unset, salt will assume current groups
+    are still wanted, and will make no changes to them.
+
+optional_groups
+    A list of groups to assign the user to, pass a list object. If a group
+    specified here does not exist on the minion, the state will silently
+    ignore it.
+
+NOTE: If the same group is specified in both "groups" and
+"optional_groups", then it will be assumed to be required and not optional.
+
+remove_groups
+    Remove groups that the user is a member of that weren't specified in
+    the state, Default is ``True``.
+
+home
+    The custom login directory of user. Uses default value of underlying
+    system if not set. Notice that this directory does not have to exist.
+    This also the location of the home directory to create if createhome is
+    set to True.
+
+createhome : True
+    If set to ``False``, the home directory will not be created if it
+    doesn't already exist.
+
+    Warning:
+        Not supported on Windows or Mac OS.
+
+        Additionally, parent directories will *not* be created. The parent
+        directory for ``home`` must already exist.
+
+nologinit : False
+    If set to ``True``, it will not add the user to lastlog and faillog
+    databases.
+
+    Note:
+        Not supported on Windows.
+
+password
+    A password hash to set for the user. This field is only supported on
+    Linux, FreeBSD, NetBSD, OpenBSD, and Solaris. If the ``empty_password``
+    argument is set to ``True`` then ``password`` is ignored.
+    For Windows this is the plain text password.
+    For Linux, the hash can be generated with ``mkpasswd -m sha-256``.
+
+Changed in version 0.16.0
+    BSD support added.
+
+hash_password
+    Set to True to hash the clear text password. Default is ``False``.
+
+
+enforce_password
+    Set to False to keep the password from being changed if it has already
+    been set and the password hash differs from what is specified in the
+    "password" field. This option will be ignored if "password" is not
+    specified, Default is ``True``.
+
+empty_password
+    Set to True to enable password-less login for user, Default is ``False``.
+
+shell
+    The login shell, defaults to the system default shell
+
+unique
+    Require a unique UID, Default is ``True``.
+
+system
+    Choose UID in the range of FIRST_SYSTEM_UID and LAST_SYSTEM_UID, Default is
+    ``False``.
+
+loginclass
+    The login class, defaults to empty
+    (BSD only)
+
+User comment field (GECOS) support (currently Linux, BSD, and MacOS
+only):
+
+The below values should be specified as strings to avoid ambiguities when
+the values are loaded. (Especially the phone and room number fields which
+are likely to contain numeric data)
+
+fullname
+    The user's full name
+
+roomnumber
+    The user's room number (not supported in MacOS)
+
+workphone
+    The user's work phone number (not supported in MacOS)
+
+homephone
+    The user's home phone number (not supported in MacOS)
+
+other
+    The user's other attribute (not supported in MacOS)
+    If GECOS field contains more than 4 commas, this field will have the rest of 'em
+
+Changed in version 2014.7.0
+    Shadow attribute support added.
+
+Shadow attributes support (currently Linux only):
+
+The below values should be specified as integers.
+
+date
+    Date of last change of password, represented in days since epoch
+    (January 1, 1970).
+
+mindays
+    The minimum number of days between password changes.
+
+maxdays
+    The maximum number of days between password changes.
+
+inactdays
+    The number of days after a password expires before an account is
+    locked.
+
+warndays
+    Number of days prior to maxdays to warn users.
+
+expire
+    Date that account expires, represented in days since epoch (January 1,
+    1970).
+
+The below parameters apply to windows only:
+
+win_homedrive (Windows Only)
+    The drive letter to use for the home directory. If not specified the
+    home directory will be a unc path. Otherwise the home directory will be
+    mapped to the specified drive. Must be a letter followed by a colon.
+    Because of the colon, the value must be surrounded by single quotes. ie:
+    - win_homedrive: 'U:
+
+    Changed in version 2015.8.0
+
+win_profile (Windows Only)
+    The custom profile directory of the user. Uses default value of
+    underlying system if not set.
+
+    Changed in version 2015.8.0
+
+win_logonscript (Windows Only)
+    The full path to the logon script to run when the user logs in.
+
+    Changed in version 2015.8.0
+
+win_description (Windows Only)
+    A brief description of the purpose of the users account.
+
+    Changed in version 2015.8.0
+
+
+--->
