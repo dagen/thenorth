@@ -1,4 +1,4 @@
-thenorth:
+base:
   '*':
     - base 
     - ssh
