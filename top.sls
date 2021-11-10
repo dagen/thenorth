@@ -1,4 +1,4 @@
 base:
   '*':
-    - base 
+    - base
     - ssh
