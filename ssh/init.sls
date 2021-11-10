@@ -1,5 +1,5 @@
 include:
-  - server
+  - ssh.server
 
 openssh:
   pkg.installed
