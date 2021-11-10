@@ -9,10 +9,10 @@
 
 {% else %}
 
-    test.show_notification:
-      - text: |
-      **** NOTICE ****
-      I'm about to install MariaDB on this host!
-      **** NOTICE ****
+  test.show_notification:
+    - text: |
+        **** NOTICE ****
+        I'm about to install MariaDB on this host!
+        **** NOTICE ****
 
 {% endif %}
