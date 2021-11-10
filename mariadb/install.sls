@@ -1,2 +1,17 @@
-cmd.run:
- - echo 'I need to install a db server.'
+{% if not 'karhold' in grains['host'] %}
+
+{{ sls }}.error_unintended_target:
+  test.show_notification:
+    - text: |
+        **** NOTICE ****
+        {{ grains['fqdn'] }} is not intended to run {{ sls }} state. This state is only intended for the Grafana hosts, therefore this state will not be ran on this minion.
+        **** NOTICE ****
+
+{% else %}
+
+    test.show_notification:
+      - text: |
+      **** NOTICE ****
+      I'm about to install MariaDB on this host!
+      **** NOTICE ****
+
