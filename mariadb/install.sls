@@ -8,7 +8,7 @@
         **** NOTICE ****
 
 {% else %}
-
+{{ sls }}.notice_intended_target:
   test.show_notification:
     - text: |
         **** NOTICE ****
