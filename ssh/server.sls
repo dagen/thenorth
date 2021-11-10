@@ -9,7 +9,7 @@ sshd:
       - file:  /etc/ssh/sshd_banner
       - file:  /etc/ssh/sshd_config
 
-/etc/ssh/sshd_config:
+file_sshd_config:
   file.managed
     - user: root
     - group: root
@@ -18,7 +18,7 @@ sshd:
     - require:
       - pkg: openssh_server
 
-/etc/ssh/banner:
+file_sshd_banner:
   file:
     - managed
     - user: root
