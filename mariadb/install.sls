@@ -9,10 +9,16 @@
 
 {% else %}
 {{ sls }}.notice_intended_target:
-  test.show_notification:
-    - text: |
-        **** NOTICE ****
-        I'm about to install MariaDB on this host!
-        **** NOTICE ****
+test.show_notification:
+  - text: |
+    **** NOTICE ****
+    I'm about to install MariaDB on this host!
+    **** NOTICE ****
+
+{{ sls }}.install_pkgs:
+  pkg.installed:
+    - pkgs:
+      - MariaDB-server
+      - MariaDB-backup
 
 {% endif %}
