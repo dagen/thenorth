@@ -1,3 +1,6 @@
 base:
   '*':
-    - base 
+    - base
+    - ssh
+  'karhold':
+    - nginx
