@@ -8,3 +8,4 @@ base:
 
   'karhold':    
     - mariadb
+    - nginx
