@@ -1,5 +1,5 @@
 nginx:
-  pkg.latest:
-    - pkgs:
-      - nginx
-      
+  pkg.installed: []
+  service.running:
+    - require:
+      - pkg: nginx
