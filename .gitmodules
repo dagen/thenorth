@@ -1,0 +1,3 @@
+[submodule "formulas/formulas/mysql-formula"]
+	path = formulas/formulas/mysql-formula
+	url = https://github.com/saltstack-formulas/mysql-formula
